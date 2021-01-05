@@ -42,7 +42,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    private ArrayList<String> titles = new ArrayList<>(), descriptions = new ArrayList<>(), images = new ArrayList<>();
+    private ArrayList<String> titles = new ArrayList<>(), links = new ArrayList<>(), descriptions = new ArrayList<>(), images = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -75,6 +75,7 @@ public class HomeFragment extends Fragment {
                     if (node.getNodeType() == Node.ELEMENT_NODE){
                         Element element = (Element) node;
                         String title = element.getElementsByTagName("title").item(0).getTextContent();
+                        String link = element.getElementsByTagName("link").item(0).getTextContent();
                         String description = element.getElementsByTagName("description").item(0).getTextContent();
                         String imageUrl = element.getElementsByTagName("enclosure").item(0).getAttributes().getNamedItem("url").getNodeValue();
 
@@ -82,6 +83,7 @@ public class HomeFragment extends Fragment {
 
                         new Thread(() -> {
                             //Do whatever
+                            links.add(link);
                             titles.add(title);
                             descriptions.add(description);
                             images.add(imageUrl);
@@ -89,7 +91,7 @@ public class HomeFragment extends Fragment {
 
 
 
-                        Adapter adapter = new Adapter(titles, descriptions, images, getActivity());
+                        Adapter adapter = new Adapter(titles, links, descriptions, images, getActivity());
                         recyclerViewView.setAdapter(adapter);
                         recyclerViewView.setLayoutManager(new LinearLayoutManager(getActivity()));
 

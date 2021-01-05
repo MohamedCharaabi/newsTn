@@ -1,6 +1,8 @@
 package com.example.news.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +21,12 @@ import java.util.ArrayList;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
-    ArrayList<String> titles, descriptions, images;
+    ArrayList<String> titles, links, descriptions, images;
     Context context;
 
-    public Adapter(ArrayList<String> titles, ArrayList<String> descriptions, ArrayList<String> images, Context context) {
+    public Adapter(ArrayList<String> titles, ArrayList<String> links, ArrayList<String> descriptions, ArrayList<String> images, Context context) {
         this.titles = titles;
+        this.links = links;
         this.descriptions = descriptions;
         this.images = images;
         this.context = context;
@@ -52,7 +55,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.cardLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "You Click" + titles.get(position), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(links.get(position)));
+                v.getContext().startActivity(i);
             }
         });
 
