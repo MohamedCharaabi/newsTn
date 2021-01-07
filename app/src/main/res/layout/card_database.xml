@@ -6,10 +6,10 @@
     android:layout_height="wrap_content"
     android:layout_marginVertical="15dp"
     android:background="#111"
-    android:id="@+id/cardLayout">
+    android:id="@+id/database_cardLayout">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/database_linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
@@ -20,10 +20,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/cardImage"
+            android:id="@+id/database_cardImage"
             android:layout_width="77dp"
             android:layout_height="100dp"
-            android:layout_gravity=""
+            android:layout_gravity="fill_vertical"
             android:layout_margin="5dp"
             android:adjustViewBounds="true" />
 
@@ -33,7 +33,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/cardTitle"
+                android:id="@+id/database_cardTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="11dp"
@@ -43,7 +43,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/cardDescription"
+                android:id="@+id/database_cardDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLength="150"
@@ -52,31 +52,7 @@
                  et de créer un RecyclerView qui permet "
                 android:textColor="#000" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
 
-                <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/love_icon"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="5dp"
-                    android:background="#fff"
-                    android:src="@drawable/love_red" />
-                <TextView
-                    android:id="@+id/date"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="19/1/1948"
-                    android:paddingRight="15dp"
-                    android:gravity="end"
-android:textColor="@color/black"
-                    />
-
-            </LinearLayout>
         </LinearLayout>
 
 

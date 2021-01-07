@@ -3,9 +3,11 @@ package com.example.news.ui.home;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.news.R;
+import com.example.news.ui.gallery.GalleryFragment;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -51,6 +54,24 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             Picasso.get().load(images.get(position)).into(holder.newImage);
         }
 
+        holder.loveIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                DatabaseHelper db  = new DatabaseHelper(context);
+
+                Log.e("title =>", titles.get(position));
+                Log.e("link =>", links.get(position));
+                Log.e("description=>", descriptions.get(position));
+                Log.e("image =>", images.get(position));
+               boolean insertData =  db.insertData(titles.get(position), links.get(position), descriptions.get(position), images.get(position));
+               if (insertData){
+                   Toast.makeText(context, "Data inserted", Toast.LENGTH_SHORT).show();
+               }else {
+                   Toast.makeText(context, "Inserting Error", Toast.LENGTH_SHORT).show();
+               }
+            }
+        });
 
         holder.cardLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +92,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         ImageView newImage;
         TextView newTitle, newDescription;
         ConstraintLayout cardLayout;
+        ImageButton loveIcon;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -80,6 +102,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             newTitle = itemView.findViewById(R.id.cardTitle);
             newDescription = itemView.findViewById(R.id.cardDescription);
             cardLayout = itemView.findViewById(R.id.cardLayout);
+            loveIcon = itemView.findViewById(R.id.love_icon);
 
         }
     }

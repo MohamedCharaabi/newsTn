@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment {
                         String description = element.getElementsByTagName("description").item(0).getTextContent();
                         String imageUrl = element.getElementsByTagName("enclosure").item(0).getAttributes().getNamedItem("url").getNodeValue();
 
-                        Log.e("images =>", imageUrl);
+//                        Log.e("images =>", imageUrl);
 
                         new Thread(() -> {
                             //Do whatever
