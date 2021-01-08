@@ -73,7 +73,8 @@
                     android:text="19/1/1948"
                     android:paddingRight="15dp"
                     android:gravity="end"
-android:textColor="@color/black"
+                    android:visibility="gone"
+                    android:textColor="@color/black"
                     />
 
             </LinearLayout>
